@@ -7,7 +7,7 @@ type OnFailure = (error: Error) => void;
 type OnProgress = (inProgress: boolean) => void;
 
 type UseAsyncParams<T> = {
-    asyncFN: () => Promise<AxiosResponse<T>> | void;
+    handler: () => Promise<AxiosResponse<T>> | void;
     onSuccess: OnSuccess<T>;
     onFailure: OnFailure;
     onProgress: OnProgress;
@@ -16,12 +16,12 @@ type UseAsyncParams<T> = {
 type UseAsync = <T>(params: UseAsyncParams<T>, deps: Inputs) => void;
 
 export const useAsync: UseAsync = ({
-    asyncFN, onSuccess, onFailure, onProgress
+ handler, onSuccess, onFailure, onProgress
 }, deps): void => {
     useEffect(() => {
         let isActive = true;
 
-        const handlerResult = asyncFN();
+        const handlerResult = handler();
 
         if (handlerResult instanceof Promise) {
             if (isActive) {
@@ -42,5 +42,5 @@ export const useAsync: UseAsync = ({
         }
         // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
         return () => { isActive = false };
-    }, [asyncFN, onFailure, onProgress, onSuccess, ...deps]);
+    }, [handler, onFailure, onProgress, onSuccess, ...deps]);
 }

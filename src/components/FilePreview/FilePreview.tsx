@@ -95,7 +95,7 @@ const FilePreview: FunctionalComponent<Props> = ({filename, language, rawUrl, si
     }, [codeString.length, rawUrl, size]);
 
     useAsync({
-        asyncFN: getCodeString,
+        handler: getCodeString,
         onProgress: setInProgress,
         onFailure: setError,
         onSuccess: setCodeString

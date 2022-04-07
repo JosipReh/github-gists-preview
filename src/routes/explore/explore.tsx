@@ -59,7 +59,7 @@ const Explore: FunctionalComponent = () => {
     }, [paging.currentPage, paging.pageSize]);
 
     useAsync({
-        asyncFN: fetchGists,
+        handler: fetchGists,
         onProgress: setInProgress,
         onFailure: setError,
         onSuccess: setGists
