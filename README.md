@@ -1,20 +1,20 @@
 # github-gists-preview
 
-#Requirements
+# Requirements
 * NPM
 * NODE
 
-###Project is built and tested with:
+### Project is built and tested with:
 * Node version: `12.22.0`
 * NPM `6.14.11`
 
-#SETUP
+# SETUP
 1. `git clone https://github.com/JosipReh/github-gists-preview`
 2. `npm install`
 3. `npm run serve`, or alternatively `npm run dev`
 4. Navigate your web-browser to `http://localhost:8080/` and you are ready to go!
 
-#Features:
+# Features:
 * Pagination with hardcoded github API limit of 3000 items
 * Ability to change number of items per page
 * Sort dropdown which sorts data in ASC & DESC orders based on created_at and updated_at fields (locally)
